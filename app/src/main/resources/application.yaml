@@ -1,2 +1,5 @@
 # we are using Latch and shutting down context by ourselves
 # camel.springboot.main-run-controller: true
+
+app:
+  count: 10

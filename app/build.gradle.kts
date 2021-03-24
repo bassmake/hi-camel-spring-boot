@@ -8,6 +8,7 @@ dependencies {
     implementation("org.apache.camel.springboot:camel-timer-starter")
 
     implementation("org.apache.camel:camel-endpointdsl")
+
     implementation(project(":pipelines"))
     implementation(project(":processors"))
 }
