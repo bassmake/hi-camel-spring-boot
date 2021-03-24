@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "hi-camel-spring-boot"
-include("app", "list", "utilities")
+include("app", "pipelines:pipeline-alpha")
