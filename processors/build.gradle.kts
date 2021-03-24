@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":pipelines:pipeline-alpha"))
+    implementation(project(":processors:fetch-programming-excuse"))
 }

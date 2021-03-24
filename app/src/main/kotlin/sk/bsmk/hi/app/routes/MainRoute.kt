@@ -8,6 +8,8 @@ class MainRoute : EndpointRouteBuilder() {
 
     override fun configure() {
         from("timer://input-timer?repeatCount=10")
+            .to("http://programmingexcuses.com")
             .to("log:info")
     }
+
 }
