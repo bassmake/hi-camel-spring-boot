@@ -6,8 +6,8 @@ import org.apache.camel.Processor
 object PipelineAlphaProcessor : Processor {
 
     override fun process(exchange: Exchange) {
-        val input  = exchange.message.body
-
+        val input  = exchange.message.getMandatoryBody(String::class.java)
+        exchange.`in`.body = input.toUpperCase()
     }
 
 }

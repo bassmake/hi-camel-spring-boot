@@ -6,21 +6,21 @@ import org.apache.camel.builder.RouteBuilder
 import org.apache.camel.RoutesBuilder
 import org.junit.jupiter.api.Test
 
-
 class PipelineAlphaProcessorTest : CamelTestSupport() {
 
     @Test
     fun testMock() {
-        getMockEndpoint("mock:result").expectedBodiesReceived("Hello World")
+        getMockEndpoint("mock:result").expectedBodiesReceived("HELLO WORLD")
         template.sendBody("direct:start", "Hello World")
         assertMockEndpointsSatisfied()
     }
 
-
-    override fun createRouteBuilder(): RoutesBuilder? {
+    override fun createRouteBuilder(): RoutesBuilder {
         return object : RouteBuilder() {
             override fun configure() {
-                from("direct:start").to("mock:result")
+                from("direct:start")
+                    .process(PipelineAlphaProcessor)
+                    .to("mock:result")
             }
         }
     }
