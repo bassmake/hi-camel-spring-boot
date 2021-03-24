@@ -3,6 +3,8 @@ plugins {
 }
 
 dependencies {
+    implementation("org.apache.camel.springboot:camel-spring-boot-starter")
+    implementation("org.apache.camel:camel-endpointdsl")
     implementation(project(":pipelines"))
 }
 
