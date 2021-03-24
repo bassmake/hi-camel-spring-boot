@@ -21,17 +21,18 @@ class AppConfig {
     fun camelContextConfiguration(latch: CountDownLatch): CamelContextConfiguration {
         return object : CamelContextConfiguration {
             private val log = LoggerFactory.getLogger(this.javaClass)
-            override fun beforeApplicationStart(camelContext: CamelContext?) {
+            override fun beforeApplicationStart(camelContext: CamelContext) {
+                camelContext.isTypeConverterStatisticsEnabled = true;
             }
 
-            override fun afterApplicationStart(camelContext: CamelContext?) {
+            override fun afterApplicationStart(camelContext: CamelContext) {
                 latch.await(10, TimeUnit.SECONDS)
                 if (latch.count == 0L) {
                     log.info("Received all notifications. Shutting down!")
                 } else {
                     log.error("Still not received ${latch.count} notifications. Shutting down!")
                 }
-                camelContext!!.stop()
+                camelContext.stop()
             }
         }
     }
